@@ -27,7 +27,6 @@ class AdminController extends SuperController {
         $admins = $adminModel->selectAdminByPage($page);
         //分页显示输出
         $show = $page->show();
-        dump(123);
         //管理员操作记录到日志表中
         $logcontent =C('SYS_LOG_ACTION_SELECT')."管理员查询成功。";
         sys_log(session('adminId'),session('adminName'),$logcontent);
