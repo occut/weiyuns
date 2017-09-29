@@ -1,0 +1,77 @@
+<include file="Common/top"/>
+<div class="layui-body">
+    <div class="content-wrapper" style = "margin-left:1px ;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            模块列表
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a href="{:U('Admin/listAdmins')}"><button type="button" class="btn btn-block btn-default">管理员列表</button></a></h3>
+                        <h3 class="box-title"><a href="{:U('Admin/listRoles')}"><button type="button" class="btn btn-block btn-default">角色列表</button></a></h3>
+                        <h3 class="box-title"><a href="{:U('Admin/listModules')}"><button type="button" class="btn btn-block btn-primary">模块列表</button></a></h3>
+                        <h3 class="box-title"><a href="{:U('Admin/addmodule')}"><button type="button" class="btn btn-block btn-default">添加模块</button></a></h3>
+                       
+                    </div>
+            <!-- /.box-header -->
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table  class="table table-bordered table-hover" id="nodetree">
+                            <thead>
+                                <tr class="tng">
+                                    <!--<th>ID</th>-->
+                                    <th>模块名</th>  
+                                    <th>模块URL</th>  
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php echo $modules ?>
+
+                            </tbody>
+                        </table>
+                     <div class="pagepadding">               
+                <div class="col-sm-5"><div aria-live="polite" role="status" id="example2_info" class="dataTables_info">共{$count}条</div></div><div class="col-sm-7"><div id="example2_paginate" class="dataTables_paginate paging_simple_numbers"><ul class="pagination">{$page}</ul></div></div>
+                </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Content Wrapper. Contains page content -->
+
+<!-- /.box -->
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(function(){
+        /**
+         * 初始化树形表格
+         */
+        $("#roletree").treetable({expandable: true});
+        /**
+         * 初始化树形表格 并展开节点到二级
+         */
+        $("#nodetree").treetable({expandable: true}).find('tr').each(function (i) {
+            var o = $(this)
+            if(o.attr('data-tt-parent-id') == 0 && o.siblings("[data-tt-parent-id='"+o.attr('data-tt-id')+"']").hasClass('leaf') == false) {
+                $("#nodetree").treetable("expandNode", o.attr('data-tt-id'));
+            }
+        });
+    });
+
+</script>
+<include file="Common/button"/>

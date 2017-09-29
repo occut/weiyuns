@@ -1,0 +1,114 @@
+<include file="Common/top"/>
+<include file="Common/nav"/>
+<!-- Content Wrapper. Contains page content -->
+<div class="layui-body">
+  <div class="content-wrapper" style="margin-left: 0px">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        编辑vpn地址
+        <small></small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box">
+              <div class="box-header">
+                    
+                    </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="layui-form" role="form" method="post" action="{:U('Vpnaddress/saveEdit')}" enctype="multipart/form-data">
+              <div class="box-body">
+                  <div class="layui-form-item">
+                    <label class="layui-form-label"  style="width:150px;">地址</label>
+                    <div class="layui-input-inline" style="width:200px;margin-left:0px;">
+                        <select name="address_addr" lay-verify="required" lay-filter="province" class="layui-input">
+                        <volist name="province" id="pr">
+                            <option value="{$pr.id}" name="{$pr.id}" <if condition="$id['pr_id'] eq $pr['id']">selected</if>>{$pr.province}</option>
+                        </volist>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline" style="width:200px;margin-left:0px;" id="listAllConfigs">
+                        <!--<div class="form-group" id="listAllConfigs"></div>-->
+                        <select name="address_city" lay-verify="required" lay-filter="province" class="layui-input">
+                        <volist name="city" id="ct">
+                            <option value="{$ct.id}" name="{$ct.id}" <if condition="$id['ci_id'] eq $ct['id']">selected</if>>{$ct.city}</option>
+                        </volist>
+                        </select>
+                    </div>
+                </div>
+            
+                 <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:150px;">网址</label>
+                    <div class="layui-input-inline" style="width:200px;margin-left:0px;">
+                        <input type="hidden" name="address_id" value="{$data.account_id}">
+                        <input type="text" name="address_url" required  lay-verify="required"  value="{$data.address_url}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+             
+                <div class="box-footer" style="margin-left: 150px">
+                  <input type="hidden" name="address_id" value="{$data.address_id}">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="reset" class="btn btn-primary">重置</button>
+              </div>
+					</div>
+              </div>
+              <!-- /.box-body -->
+
+              
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  </div>
+
+  <!-- /.content-wrapper -->
+<include file="Common/button"/>
+ <script>
+    //Demo
+
+    layui.use('form', function(){
+        var form = layui.form();
+
+        form.on('select(province)', function(data){
+//            console.log(data.elem); //得到select原始DOM对象
+            var id = data.value; //得到被选中的值
+//            console.log(data.othis); //得到美化后的DOM对象
+            // alert(id);
+            $.ajax({
+                url:"{:U('Vpnaddress/city')}",
+                type:"post",
+                dataType: "json",
+                data:{'configId':id },
+                async: "false",
+                success:function(result){
+                    // alert(123);
+                    // alert(result.value);
+                    $("#listAllConfigs").empty();
+                    $("#listAllConfigs").append("<select style='display:block'   name='address_city' lay-verify='required'  class='layui-input'>"+result.value+"</select>");
+                }
+
+            })
+
+        // });
+        //监听提交
+        // form.on('submit(formDemo)', function(data){
+        //     layer.msg(JSON.stringify(data.field));
+        //     return false;
+        // });
+        });
+    });
+</script>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../laraver/.idea/blogkai.iml" filepath="$PROJECT_DIR$/../laraver/.idea/blogkai.iml" />
+      <module fileurl="file://F:/working/time/.idea/thinkphp_3.2.3.iml" filepath="F:/working/time/.idea/thinkphp_3.2.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/www.iml" filepath="$PROJECT_DIR$/.idea/www.iml" />
+    </modules>
+  </component>
+</project>

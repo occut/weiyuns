@@ -1,0 +1,78 @@
+<include file="Common/top"/>
+<include file="Common/nav"/>
+<!-- Content Wrapper. Contains page content -->
+<div class="layui-body">
+  <div class="content-wrapper" style="margin-left: 0px">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        编辑vpn账号
+        <small></small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box">
+              <div class="box-header">
+                    
+                    </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" action="{:U('VpnAccount/saveEdits')}" enctype="multipart/form-data">
+              <div class="box-body">
+              <!-- <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:150px;">设备</label>
+                    <div class="layui-input-inline" style="width:200px;margin-left:0px;">
+                        <select class="layui-input">
+                        <volist name="equipments" id="es">
+                            <option value="{$data.equipment}">{$es.equipment}</option>
+                        </volist>
+                        
+                        </select>
+                    </div>
+                </div> -->
+                 <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:150px;">账号</label>
+                    <div class="layui-input-inline" style="width:200px;margin-left:0px;">
+                        <input type="hidden" name="account_id" value="{$data.account_id}">
+                        <input type="text" name="account_name" required  lay-verify="required"  value="{$data.account_name}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            
+                 <div class="layui-form-item">
+                    <label class="layui-form-label" style="width:150px;">密码</label>
+                    <div class="layui-input-inline" style="width:200px;margin-left:0px;">
+                        <input type="hidden" name="account_id" value="{$data.account_id}">
+                        <input type="text" name="account_password" required  lay-verify="required"  value="{$data.account_password}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+             
+                <div class="box-footer" style="margin-left: 150px">
+                  <input type="hidden" name="account_id" value="{$data.account_id}">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="reset" class="btn btn-primary">重置</button>
+              </div>
+					</div>
+              </div>
+              <!-- /.box-body -->
+
+              
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  </div>
+  <!-- /.content-wrapper -->
+<include file="Common/button"/>
+

@@ -1,0 +1,68 @@
+<include file="Common/top"/>
+<include file="Common/nav"/>
+<div class="layui-body">
+<div class="content-wrapper" style="margin-left: 0px">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            vpn账号列表
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><a href="{:U('VpnAccount/addVpnAccount')}"><button type="button" class="btn btn-block btn-primary">新增vpn账号</button></a></h3>
+                         <h3 class="box-title"><a href="javascript:void(0)')}"><button type="button" class="btn btn-block btn-primary" onclick="delAll('{:U('VpnAccount/deleteaccounts')}')">批量删除</button></a></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="tng">
+                                    <th style = "text-align: center;"><input type="checkbox" id="dellAll" value=""></th>
+                                    <th style = "text-align: center;">ID</th>
+                                    <th style = "text-align: center;">设备名</th>
+                                    <th style = "text-align: center;">账号</th>
+                                    <th style = "text-align: center;">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="allAccounts" id="vo">
+                                <tr class="tnd" style = "text-align: center;">
+                                    <td><input type="checkbox" value="{$vo.account_id}" name="delAll"></td>
+                                    <td>{$vo.account_id}</td>
+                                    <td>{$vo.equipment}</td>
+                                    <td>{$vo.account_name }</td>
+                                    <td>
+                                        <a href="{:U('VpnAccount/editvpnaccount',array('account_id'=>$vo['account_id']))}">编辑</a>
+                                        <a href="javascript:if(confirm('确实要删除吗?'))location='{:U('VpnAccount/deletevpnaccount',array('account_id'=>$vo['account_id']))}'">删除</a>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                     <div class="pagepadding">               
+                <div class="col-sm-5"><div aria-live="polite" role="status" id="example2_info" class="dataTables_info">共{$count}条</div></div><div class="col-sm-7"><div id="example2_paginate" class="dataTables_paginate paging_simple_numbers"><ul class="pagination">{$page}</ul></div></div>
+                </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<div>
+<!-- /.content-wrapper -->
+
+<!-- Content Wrapper. Contains page content -->
+
+<!-- /.box -->
+<include file="Common/button"/>
+
