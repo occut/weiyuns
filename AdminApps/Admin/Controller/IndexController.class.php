@@ -39,12 +39,12 @@ class IndexController extends SuperController {
         $this->assign('resources', $resources);
         $this->display('Index/index');
     }
-//根据ip获取fdsh uev gfvfvdfydegygf
+//根据ip获取当前所在位置
     public function maps(){
         $addr=I('addr');
         $file="http://apis.map.qq.com/ws/location/v1/ip?&key=AYTBZ-ZREKJ-ATVF3-FWMEW-FFXC5-CVF5Y";//根据端ip获取所在位置
-        $addr = get($file,'array');
-        $this->assign('LngLat',$addr);
+        $address = get($file,'array');
+        $this->assign('LngLat',$address);
         $this->display("Index/map");
     }
 }

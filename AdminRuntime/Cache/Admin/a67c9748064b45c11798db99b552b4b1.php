@@ -69,16 +69,15 @@
                 </div>
                 <div loc="1,1" size="6,3" class="block">
                     <div class="content" style="background: url('/AdminResource/adminhome/images//presentation/1.png');background-size: auto" onclick="Win10.openUrl('<?php echo U('Index/map');?>','<img class=\'icon\' src=\'/AdminResource/adminhome/images//icon/vpn.png\'/>腾讯地图')">
-                        <div style="line-height:132px;text-align: center;" id="container">地图</div>
+                        <div style="line-height:132px;text-align: center;" id="container" width="300px" height="300px">地图</div>
                     </div>
                 </div>
             </div>
-
-            <!--<div class="menu_group">-->
-                <!--<div class="title">-->
-                    <!--常用场景-->
-                <!--</div>-->
-
+            <div class="menu_group">
+                <div class="title">
+                    常用场景
+                </div>
+            </div>
         </div>
         <div id="win10-menu-switcher"></div>
     </div>
@@ -124,20 +123,6 @@ window.onload = function(){
 
     //调用初始化函数地图
     init();
-
-//    $(".content").click(function(){
-//        var status=1;
-//        $.ajax({
-//            url:"<?php echo U('Index/map');?>",
-//            type:"get",
-//            dataType:"json",
-//            data:{'status':status},
-//            async:"false",
-//            success:function(result){
-//
-//            }
-//        });
-//    });
 }
 
 </script>
