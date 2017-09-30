@@ -109,7 +109,6 @@
                                     </td>
                                     <td><?php echo ($vo["wei_remarks"]); ?></td>
                                     <td><?php echo (subtext($vo["wei_equipment"],15)); ?></td>
-
                                     <td>
                                         <?php if(($vo["wei_static"]) == "2"): ?><a href="javascript:;" onclick="static(<?php echo ($vo['wei_id']); ?>)">
                                                 正常
@@ -142,16 +141,11 @@
                         <div class="pagepadding">
                             <div class="col-sm-5"><div aria-live="polite" role="status" id="example2_info" class="dataTables_info">共<?php echo ($count); ?>条</div></div><div class="col-sm-7"><div id="example2_paginate" class="dataTables_paginate paging_simple_numbers"><ul class="pagination"><?php echo ($page); ?></ul></div></div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
         </div>
     </section>
-    <!-- /.content -->
 </div>
 <!--底部信息-->
 <div class="layui-footer">
@@ -223,13 +217,11 @@
 </script>
 </body>
 </html>
-<!-- /.content-wrapper -->
     <script>
         $(document).ready(function () {
             var num = 1;
             var checkbox = $("input[type='checkbox'][name='delAll']");
             $('#dellAll').on('click',function () {
-//                alert(123);
                 if (num%2){
                     $.each(checkbox, function(i, n){
                         checkbox[i].checked = true;

@@ -16,10 +16,9 @@ class WechatController extends SuperController {
     public function WechaGroups() {
         //实例化UserGroup模型
         $WechaModel = D('Weichat');
- $eqsModel=D('grouping');
+        $eqsModel=D('grouping');
         $options=$eqsModel->select();
-$this->assign('alleqs', $options);
-
+        $this->assign('alleqs', $options);
         //获取总的用户数
         $id = 1;
         $count = $WechaModel->selectWeichatTotalSize($id);

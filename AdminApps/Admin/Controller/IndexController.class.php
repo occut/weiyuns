@@ -27,11 +27,9 @@ class IndexController extends SuperController {
 //        有上传的头像就用，没有就系统默认的
         if(!empty($ex[1])){
             $path=$ex1[1].$ex[1];
-//            dump($path);die;
         }else{
             $path='/UploadImages/images/main.jpg';
         }
-//        dump($path);die;
         //查询首页图标
         $resources = $MenuGroupModel->selectAllMenuGroupByIsHidden(0);
         //赋值模板
@@ -39,12 +37,22 @@ class IndexController extends SuperController {
         $this->assign('resources', $resources);
         $this->display('Index/index');
     }
+
 //根据ip获取当前所在位置hj
-    public function maps(){
-//        $addr=I('addr');
-//        $file="http://apis.map.qq.com/ws/location/v1/ip?&key=AYTBZ-ZREKJ-ATVF3-FWMEW-FFXC5-CVF5Y";//根据端ip获取所在位置
-//        $address = get($file,'array');
-//        $this->assign('LngLat',$address);
-//        $this->display("Index/map");
+    public function maps()
+    {
+        $addr=I('addr');
+        $file="http://apis.map.qq.com/ws/location/v1/ip?&key=AYTBZ-ZREKJ-ATVF3-FWMEW-FFXC5-CVF5Y";//根据端ip获取所在位置
+        $address = get($file,'array');
+        $this->assign('LngLat',$address);
+        $this->display("Index/map");
+    }
+
+    public function map(){
+        $addr=I('addr');
+        $file="http://apis.map.qq.com/ws/location/v1/ip?&key=AYTBZ-ZREKJ-ATVF3-FWMEW-FFXC5-CVF5Y";//根据端ip获取所在位置
+        $addr = get($file,'array');
+        $this->assign('LngLat',$addr);
+        $this->display("Index/map");
     }
 }

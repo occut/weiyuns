@@ -89,7 +89,6 @@
                                     </td>
                                     <td>{$vo.wei_remarks}</td>
                                     <td>{$vo.wei_equipment|subtext=15}</td>
-
                                     <td>
                                         <eq name="vo.wei_static" value="2">
                                             <a href="javascript:;" onclick="static({$vo['wei_id']})">
@@ -125,25 +124,18 @@
                         <div class="pagepadding">
                             <div class="col-sm-5"><div aria-live="polite" role="status" id="example2_info" class="dataTables_info">共{$count}条</div></div><div class="col-sm-7"><div id="example2_paginate" class="dataTables_paginate paging_simple_numbers"><ul class="pagination">{$page}</ul></div></div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
         </div>
     </section>
-    <!-- /.content -->
 </div>
 <include file="Common/button"/>
-<!-- /.content-wrapper -->
     <script>
         $(document).ready(function () {
             var num = 1;
             var checkbox = $("input[type='checkbox'][name='delAll']");
             $('#dellAll').on('click',function () {
-//                alert(123);
                 if (num%2){
                     $.each(checkbox, function(i, n){
                         checkbox[i].checked = true;

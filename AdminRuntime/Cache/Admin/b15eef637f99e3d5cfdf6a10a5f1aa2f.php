@@ -33,10 +33,13 @@
     <div class="layui-field-box">
         <div id="dataContent" class="">
             <a href="<?php echo U('Navigation/addNavigation');?>" class="layui-btn ">添加配置</a>
+            <a class="layui-btn" onclick="delAll('<?php echo U('Navigation/deleteNavigation');?>')">批量删除</a>
+            <!--<a href="<?php echo U('Navigation/deleteNavigation');?>" class="layui-btn ">删除</a>-->
             <!--内容区域 ajax获取-->
             <table style="" class="layui-table" lay-even="">
                 <thead>
                 <tr class="tng">
+                    <th style = "text-align: center;"><input type="checkbox" id="dellAll" value=""></th>
                     <th style="text-align: center;">配置ID</th>
                     <th style="text-align: center;">任务名称</th>
                     <th style="text-align: center;">配置参数</th>
@@ -46,7 +49,7 @@
                 </thead>
                 <tbody style="text-align: center;">
                 <?php echo getnavigationgrouplist(0);?>
-                </volist>
+                <!--</volist>-->
 
                 </tbody>
             </table>
