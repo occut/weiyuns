@@ -85,7 +85,7 @@ class NavigationController extends SuperController{
                 $logcontent = C('SYS_LOG_ACTION_ADD')."导航分组添加成功。" . "导航分组名：" . $groupName;
                 sys_log(session('adminId'),session('adminName'),$logcontent);
 
-                $this->success(L('ADD_NAVGROUP_SUCCESS'), U('Navigation/deviceGrouping'));
+                $this->success(L('ADD_NAVGROUP_SUCCESS'), U('Navigation/listNavigations'));
             }
             else {
                 //管理员操作记录到日志表中
@@ -97,6 +97,7 @@ class NavigationController extends SuperController{
         }
         else{
             $this->display('Navigation/addnavigation');
+//            $this->display('Navigation/listNavigations');
         }
     }
 
@@ -167,6 +168,7 @@ class NavigationController extends SuperController{
     public function deleteNavigation() {
         //接受GET传递过来的参数
         $groupId = I('navid');
+        //批量删除
         $ids = I('ids');
         //实例化Navigation模型
         $navigationModel = D('Navigation');
@@ -194,6 +196,7 @@ class NavigationController extends SuperController{
                 $this-> error(L('EXIST_SUBPARENTID'));
             }
         }else{
+            //批量删除
             $a['nav_id'] = array('in',$ids);
             $value = $navigationModel->where($a)->delete();
             if ($value){
