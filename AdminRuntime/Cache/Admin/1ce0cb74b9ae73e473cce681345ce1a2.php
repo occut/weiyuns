@@ -51,38 +51,34 @@
 <!--主体内容-->
 <div class="layui-body">
     <div class="content-wrapper" style = "margin-left:1px ;">
-        <!-- Content Header (Page header) -->
-        <!--<section class="content-header">-->
-            <!--<h1>-->
-              <!---->
-            <!--</h1>-->
-        <!--</section>-->
-
         <div class="layui-field-box">
+            <!--<form method="post" action="<?php echo U('Index/searchAddr');?>" style="margin-bottom: 10px">-->
+            <!--<input type="text" class="layui-input pull-left" style="width: 200px" name="addr">-->
+            <!--<input type="button" class="btn layui-btn-success pull-left" value="搜索" style="outline: none;margin-left: 10px" onclick="addrSearch()">-->
+            <div class="clearfix"></div>
+            <!--</form>-->
             <!--   定义地图显示容器   -->
             <div id="container"></div>
+            <input type="hidden" value="<?php echo ($LngLat['result']['location']['lng']); ?>" id="lng">
+            <input type="hidden" value="<?php echo ($LngLat['result']['location']['lat']); ?>" id="lat">
         </div>
         <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
         <script>
-
             window.onload = function(){
-
+                var lng=parseFloat(document.getElementById("lng").value);
+                var lat=parseFloat(document.getElementById("lat").value);
 //直接加载地图
-
-
                 //初始化地图函数  自定义函数名init
                 function init() {
                     //定义map变量 调用 qq.maps.Map() 构造函数   获取地图显示容器
                     var map = new qq.maps.Map(document.getElementById("container"), {
-                        center: new qq.maps.LatLng(39.916527,116.397128),      // 地图的中心地理坐标。
+
+                        center: new qq.maps.LatLng(lat,lng),      // 地图的中心地理坐标。
                         zoom:8                                                 // 地图的中心地理坐标。
                     });
                 }
-
                 //调用初始化函数地图
                 init();
-
-
             }
         </script>
         <!--底部信息-->
