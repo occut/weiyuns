@@ -232,8 +232,8 @@ function getnavigationgrouplist($parentId, $level = 0) {
     $navigation = $navigationModel->selectNavigationByParentId($parentId);
     if (!empty($navigation)) {
         foreach ($navigation as $k => $v) {
-
             $art .= "<tr>";
+            $art .= "<td><input type='checkbox' value=\"".$v['nav_id']."\" name='delAll'></td>";
             $art .= "<td>" . $v['nav_id'] . "</td>";
             $art .= "<td>" . str_repeat('', $level * 5) . $v['nav_name'] . "</td>";
             $art.="<td>".$v['nav_title']."</td>";
