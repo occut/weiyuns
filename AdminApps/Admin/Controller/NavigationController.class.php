@@ -132,35 +132,28 @@ class NavigationController extends SuperController{
             $data['parent_id']=$parentId;
             //实例化Navigation模型
             $NavigationModel = D('Navigation');
-
             $result =  $NavigationModel->saveNavigation($groupId, $data);
             if ($result) {
                 //管理员操作记录到日志表中
                 $logcontent = C('SYS_LOG_ACTION_MODIFY')."导航分组编辑成功。" . "导航分组名：" . $groupName;
                 sys_log(session('adminId'),session('adminName'),$logcontent);
-
                 $this->success(L('EDIT_NAVGROUP_SUCCESS'), U('Navigation/listnavigations'));
             }
  else {
                 //管理员操作记录到日志表中
                 $logcontent = C('SYS_LOG_ACTION_MODIFY')."导航分组编辑失败。" . "导航分组名：" . $groupName;
                 sys_log(session('adminId'),session('adminName'),$logcontent);
-
                 $this->error(L('EDIT_NAVGROUP_FAILURE'));
             }
         } else{
             //接受GET传递过来的参数
             $groupId = I('navid');
-
             //实例化Navigation模型
             $NavigationModel = D('Navigation');
             //编辑导航分组navigation_group中group_id为$groupid的一条数据
             $Navigation =$NavigationModel->selectNavigationById($groupId);
-//			print_r($Navigation);
-
             //查找父行业信息
             $parentNavigation =$NavigationModel->selectNavigationById($Navigation['parent_id']);
-
             //赋值到模版
             $this->assign('navigation', $Navigation);
             $this->assign('parentnavigation',$parentNavigation);
@@ -174,37 +167,41 @@ class NavigationController extends SuperController{
     public function deleteNavigation() {
         //接受GET传递过来的参数
         $groupId = I('navid');
-
+        $ids = I('ids');
         //实例化Navigation模型
         $navigationModel = D('Navigation');
+        if (empty($ids)){
 
         //查找导航分组navigation_group中group_id为$groupid的一条数据
         $navigation = $navigationModel->selectNavigationById($groupId);
-
         //查找导航分组中的parentId
         $groupParentId= $navigationModel->selectNavigationByParentId($groupId);
-
             if(empty($groupParentId)){
-
                 //删除导航分组
                 $del = $navigationModel->deleteNavigationById($groupId);
-
                 if ($del) {
                     //管理员操作记录到日志表中
                     $logcontent = C('SYS_LOG_ACTION_DELETE')."配置删除成功。" . "导航分组名：" . $navigation['nav_name'];
                     sys_log(session('adminId'),session('adminName'),$logcontent);
-
                     $this->success(L('DELTE_NAVGROUP_SUCCESS'), U('Navigation/listnavigations'));
                 } else {
                     //管理员操作记录到日志表中
                     $logcontent = C('SYS_LOG_ACTION_DELETE')."配置删除失败。" . "导航分组名：" .$navigation['nav_name'];
                     sys_log(session('adminId'),session('adminName'),$logcontent);
-
                     $this->error(L('DELTE_NAVGROUP_FAILURE'));
                 }
             }else{
                 $this-> error(L('EXIST_SUBPARENTID'));
             }
+        }else{
+            $a['nav_id'] = array('in',$ids);
+            $value = $navigationModel->where($a)->delete();
+            if ($value){
+                echo 1;
+            }else{
+                echo 2;
+            }
+        }
         }
 
     //ajax 提交改变ishidden 字段参数

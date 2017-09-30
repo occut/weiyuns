@@ -27,11 +27,9 @@ class IndexController extends SuperController {
 //        有上传的头像就用，没有就系统默认的
         if(!empty($ex[1])){
             $path=$ex1[1].$ex[1];
-//            dump($path);die;
         }else{
             $path='/UploadImages/images/main.jpg';
         }
-//        dump($path);die;
         //查询首页图标
         $resources = $MenuGroupModel->selectAllMenuGroupByIsHidden(0);
         //赋值模板
