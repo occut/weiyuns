@@ -9,6 +9,8 @@
  * 以下代码只是为了方便商户测试而提供的样例代码，商户可以根据自己网站的需要，按照技术文档编写,并非一定要使用该代码。
  * 该代码仅供学习和研究支付宝接口使用，只是提供一个参考。
  */
+//require_once("Corefunction.php");
+//require_once("alipay_md5.function.php");
 
 class AlipaySubmit {
 
@@ -100,7 +102,7 @@ class AlipaySubmit {
         }
 
 		//submit按钮控件请不要含有name属性
-        $sHtml = $sHtml."<input type='submit' value='".$button_name."'></form>";
+        $sHtml = $sHtml."<input type='hidden' value='".$button_name."'></form>正在向支付宝提交数据...";
 		
 		$sHtml = $sHtml."<script>document.forms['alipaysubmit'].submit();</script>";
 		
@@ -149,7 +151,7 @@ class AlipaySubmit {
      * return 时间戳字符串
 	 */
 	function query_timestamp() {
-		$url = $this->alipay_gateway_new."service=query_timestamp&partner=".trim(strtolower($this->alipay_config['partner']))."&_input_charset=".trim(strtolower($this->alipay_config['input_charset']));
+		$url = $this->alipay_gateway_new."service=query_timestamp&partner=".trim(strtolower($this->alipay_config['partner']));
 		$encrypt_key = "";		
 
 		$doc = new DOMDocument();

@@ -41,8 +41,8 @@ return array(
     'NULL_PARAM'=>0,
     //支付宝配置参数
     'alipay_config'=>array(
-      'partner' =>'2088411463617841',   //这里是你在成功申请支付宝接口后获取到的PID；
-      'key'=>'j0kvppsabrott9bz6a795s0a2nr82px0',//这里是你在成功申请支付宝接口后获取到的Key
+      'partner' =>'2017093009005762',   //这里是你在成功申请支付宝接口后获取到的PID；
+      'key'=>'yod8sn59atbr1xffbz49izvxqxv6bbu5',//这里是你在成功申请支付宝接口后获取到的Key
       'sign_type'=>strtoupper('MD5'),
       'input_charset'=> strtolower('utf-8'),
       'cacert'=> getcwd().'\\cacert.pem',
@@ -50,7 +50,7 @@ return array(
       ),
     'alipay'   =>array(
    //这里是卖家的支付宝账号，也就是你申请接口时注册的支付宝账号
-   'seller_email'=>'liming@ahyc.cc',
+   'seller_email'=>'672322607@qq.com',
   //这里是异步通知页面url，提交到项目的Pay控制器的notifyurl方法；
   'notify_url'=>'http://localhost/index.php/Pay/notifyurl', 
   //这里是页面跳转通知url，提交到项目的Pay控制器的returnurl方法；
