@@ -41,10 +41,7 @@ class IndexController extends SuperController {
 //根据ip获取当前所在位置hj
     public function map()
     {
-<<<<<<< HEAD
-//        $addr=I('addr');
-=======
->>>>>>> b6aa6aa38dab3a42de25c06c5bfad68714240a02
+        $addr=I('addr');
         $file="http://apis.map.qq.com/ws/location/v1/ip?&key=AYTBZ-ZREKJ-ATVF3-FWMEW-FFXC5-CVF5Y";//根据端ip获取所在位置
         $address = get($file,'array');
         F('address',$address);//用于首页界面的地图显示
